@@ -1,0 +1,112 @@
+public class com.geekbang.java.jvm.c01.ByteCodeTest implements java.io.Serializable
+  minor version: 0
+  major version: 59
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #14                         // com/geekbang/java/jvm/c01/ByteCodeTest
+  super_class: #2                         // java/lang/Object
+  interfaces: 1, fields: 0, methods: 2, attributes: 1
+Constant pool:
+   #1 = Methodref          #2.#3          // java/lang/Object."<init>":()V
+   #2 = Class              #4             // java/lang/Object
+   #3 = NameAndType        #5:#6          // "<init>":()V
+   #4 = Utf8               java/lang/Object
+   #5 = Utf8               <init>
+   #6 = Utf8               ()V
+   #7 = Class              #8             // java/lang/IllegalArgumentException
+   #8 = Utf8               java/lang/IllegalArgumentException
+   #9 = String             #10            // 数字必须大于等于0
+  #10 = Utf8               数字必须大于等于0
+  #11 = Methodref          #7.#12         // java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+  #12 = NameAndType        #5:#13         // "<init>":(Ljava/lang/String;)V
+  #13 = Utf8               (Ljava/lang/String;)V
+  #14 = Class              #15            // com/geekbang/java/jvm/c01/ByteCodeTest
+  #15 = Utf8               com/geekbang/java/jvm/c01/ByteCodeTest
+  #16 = Class              #17            // java/io/Serializable
+  #17 = Utf8               java/io/Serializable
+  #18 = Utf8               Code
+  #19 = Utf8               LineNumberTable
+  #20 = Utf8               LocalVariableTable
+  #21 = Utf8               this
+  #22 = Utf8               Lcom/geekbang/java/jvm/c01/ByteCodeTest;
+  #23 = Utf8               evenSum
+  #24 = Utf8               (I)I
+  #25 = Utf8               i
+  #26 = Utf8               I
+  #27 = Utf8               number
+  #28 = Utf8               sum
+  #29 = Utf8               StackMapTable
+  #30 = Utf8               SourceFile
+  #31 = Utf8               ByteCodeTest.java
+{
+  public com.geekbang.java.jvm.c01.ByteCodeTest();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 5: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   Lcom/geekbang/java/jvm/c01/ByteCodeTest;
+
+  public static int evenSum(int);
+    descriptor: (I)I
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=3, args_size=1
+                                              // 方法参数number -> locals(+1,1)
+         0: iload_0                           // 从本地变量表加载方法参数number -> stack(+1,1)
+         1: ifge          14                  // 如果number>=0，跳转至14 -> stack(-1,0)
+         4: new           #7                  // IllegalArgumentException对象引用地址 -> stack(+1,1)
+         7: dup                               // 复制栈顶值，同时入栈 -> stack(+1,2)
+         8: ldc           #9                  // 从常量池加载异常消息，用于初始化IllegalArgumentException对象 -> stack(+1,3)
+        10: invokespecial #11                 // 调用IllegalArgumentException对象构造函数 -> stack(-2,1)
+        13: athrow                            // 抛出IllegalArgumentException对象 -> stack(-1,0)
+        14: iconst_0                          // 加载常量0 -> stack(+1,1)
+        15: istore_1                          // sum=0，保存sum到本地变量表 -> locals(+1,2), stack(-1,0)
+        16: iconst_0                          // 加载常量0 -> stack(+1,1)
+        17: istore_2                          // for循环i=0，保存i到本地变量表 -> locals(+1,3), stack(-1,0)
+        18: iload_2                           // for循环开始，从本地变量表加载i -> stack(+1,1)
+        19: iload_0                           // 从本地变量表加载number -> stack(+1,2)
+        20: if_icmpge     40                  // 如果 i<number，跳转至40 -> stack(-2,0)
+        23: iload_2                           // 从本地变量表加载i -> stack(+1,1)
+        24: iconst_2                          // 加载常量2 -> stack(+1,2)
+        25: irem                              // i%2(取模)，结果入栈 -> stack(-2,0),stack(+1,1)
+        26: ifne          33                  // 取模结果不为0，跳转至33 -> stack(-1,0)
+        29: iload_1                           // 取模结果等于0；从本地变量表加载sum -> stack(+1,1)
+        30: iload_2                           // 从本地变量表加载i -> stack(+1,2)
+        31: iadd                              // sum = sum + i, 结果入栈 -> stack(-2,0)，stack(+1,1)
+        32: istore_1                          // 将栈顶值(sum)存入本地变量表 -> stack(-1,0)
+        33: iload_2                           // 从本地变量表加载i -> stack(+1,1)
+        34: iconst_2                          // 加载常量2 -> stack(+1,2)
+        35: iadd                              // i = i + 2, 结果入栈 -> stack(-2,0)，stack(+1,1)
+        36: istore_2                          // 将栈顶值(i)存入本地变量表 -> stack(-1,0)
+        37: goto          18                  // for循环结束，跳转至18
+        40: iload_1                           // 从本地变量表加载sum -> stack(+1,1)
+        41: ireturn                           // 将栈顶值(sum)返回，方法结束 -> stack(-1,0)
+      LineNumberTable:
+        line 14: 0
+        line 15: 4
+        line 18: 14
+        line 19: 16
+        line 20: 23
+        line 21: 29
+        line 19: 33
+        line 25: 40
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           18      22     2     i   I
+            0      42     0 number   I
+           16      26     1   sum   I
+      StackMapTable: number_of_entries = 4
+        frame_type = 14 /* same */
+        frame_type = 253 /* append */
+          offset_delta = 3
+          locals = [ int, int ]
+        frame_type = 14 /* same */
+        frame_type = 250 /* chop */
+          offset_delta = 6
+}
