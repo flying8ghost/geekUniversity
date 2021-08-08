@@ -1,2 +1,2 @@
-# geekUniversity
-极客大学 - Java训练营第5期
+# 极客大学
+- JavaCourse05 - Java训练营第5期
