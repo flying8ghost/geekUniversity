@@ -9,6 +9,6 @@
 
 ​	3、xml显示装配：applicationContext.xml、Student2.java、Klass2.java、School2.java
 
-08、SchoolAutoConfiguration.java、pom_auto_config.xml（自动配置项目pom.xml）、spring.factories（自动配置项目factories文件）、pom_start.xml（start项目pom.xml）
+08、JavaConfig.java、SchoolAutoConfiguration.java、pom_auto_config.xml（自动配置项目pom.xml）、spring.factories（自动配置项目factories文件）、pom_start.xml（start项目pom.xml）
 
 10、JDBCDemo.java
